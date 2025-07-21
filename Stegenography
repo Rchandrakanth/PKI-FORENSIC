@@ -1,0 +1,16 @@
+Stegenography (hiding the data in images or hidden files)
+
+sudo apt install steghide
+Mkd dir → stegno 
+	Store images and text file
+        ex: cat.jpeg  parrot.jpeg  secret.txt
+
+ $ steghide embed -cf parrot.jpeg -ef secret.txt 
+Then remove the secret.txt 
+
+To extract the txt file from the image 
+	Steghide extract -sf parrot.jpeg
+
+secret .txt will appears in directory 
+	Cat secret.txt
+	
