@@ -1,0 +1,30 @@
+- Sudo fdisk -l
+- Sudo dd if=/dev/zero |pv | sudo dd of=/dev/sbd bs=3000
+- sudo fdisk /dev/sdb 
+	New →>p → 1 → enter —> w
+- fdisk -l
+Lsblk
+Sudo mkfs /dev/sdb1 —>> lsblk 
+Sudo mount   /dev/sdb1 /mnt/mypoint
+
+Sudo cp cat.jpg /mnt/mypoint
+Sudo rm cat.jpg
+Sudo umount /dev/sdb1
+Cd /mnt/mypoiont 
+Cd ..
+Sha1sum /dev/sdb1 >> hash.txt
+Sudo xxd -a /dev/sdb1 
+Sudo xxd - a /dev/sdb1 | grep ‘ffd8’ or ffd9 or  d9 or  d8
+Sudo dd if=/dev/sdb1 |pv | dd of =information.img
+Ls -l or ls -lh
+Sudo sha1sum information.img >> hash.txt
+Cat hast.txt
+Sudo xxd -a information.img
+
+Sudo echo “ibase=16; 00400000 “ | bc  —> we get the skip =41934304
+Sudo echo “ibase=16”; 0040183C “ | bc   =---->> 42000508
+
+Sudo echo “42000508-4193404 ” —>> 6204 -(count)
+
+Sudo dd if =information.img |pv| dd of= wegot.jpeg skip=’41934304 bs=1 count=6204
+
