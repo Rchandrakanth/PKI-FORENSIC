@@ -1,0 +1,22 @@
+After creating the rootca and subca and tinku  digital certificates 
+
+Sudo apt install apache2 
+Sudo mkdir tinku
+Cd tinku
+Sudo mkdir /etc/apache2/ssl
+
+Copy the tinku private key and tinku chain certificate—--> only  pem files  using winscp 
+
+Sudo cp chain chain_tinku.pem  private_tinku.pem /etc/apache2/ssl
+Cd /etc/apache2/ssl 
+Sudo a2enmod ssl 
+Sudo a2ensite default-ssl
+Tree /etc/apache2/ssl
+
+Sudo nano /etc/apache2/sites-available/default-ssl.conf
+Servername www.shuharilabs.local:443
+Sslcertificatefile 	/etc/apche2/ssl/chain_tinku.pem
+Sslcertificatekeyfile 	/etc/apache2/ssl/private_tinku.pem
+Sudo systemctl restart apache2
+
+https://192.168.80.130
