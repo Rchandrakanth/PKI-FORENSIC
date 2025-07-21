@@ -1,7 +1,12 @@
 - Sudo fdisk -l
 - Sudo dd if=/dev/zero |pv | sudo dd of=/dev/sbd bs=3000
 - sudo fdisk /dev/sdb 
-	New →>p → 1 → enter —> w
+	- n
+	- p
+	- 1 
+	- enter 
+	- enter
+	- w
 - fdisk -l
 Lsblk
 Sudo mkfs /dev/sdb1 —>> lsblk 
