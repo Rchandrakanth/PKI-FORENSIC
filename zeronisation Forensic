@@ -29,7 +29,7 @@ Sudo xxd -a information.img
 Sudo echo “ibase=16; 00400000 “ | bc  —> we get the skip =41934304
 Sudo echo “ibase=16”; 0040183C “ | bc   =---->> 42000508
 
-Sudo echo “42000508-4193404 ” | bc—>> 6204 -(count)
+Sudo echo “42000508-4193404 ” | bc  —>> 6204 -(count)
 
 Sudo dd if =information.img |pv| dd of= wegot.jpeg skip=’41934304 bs=1 count=6204
 
