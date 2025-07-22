@@ -8,14 +8,19 @@ Copy the tinku private key and tinku chain certificate—--> only  pem files  us
 
 Sudo cp chain_tinku.pem  private_tinku.pem /etc/apache2/ssl
 Cd /etc/apache2/ssl 
-Sudo a2enmod ssl 
-Sudo a2ensite default-ssl
-Tree /etc/apache2/ssl
+      Sudo a2enmod ssl 
+      Sudo a2ensite default-ssl
+      Tree /etc/apache2/ssl
 
 Sudo nano /etc/apache2/sites-available/default-ssl.conf
-Servername www.shuharilabs.local:443
-Sslcertificatefile 	/etc/apche2/ssl/chain_tinku.pem
-Sslcertificatekeyfile 	/etc/apache2/ssl/private_tinku.pem
+      Servername www.shuharilabs.local:443
+      Sslcertificatefile 	/etc/apche2/ssl/chain_tinku.pem
+      Sslcertificatekeyfile 	/etc/apache2/ssl/private_tinku.pem
+
+✅ Make sure /etc/hosts contains:
+
+      192.168.80.130   www.shuharilabs.local
+
 Sudo systemctl restart apache2
 
 https://192.168.80.130
