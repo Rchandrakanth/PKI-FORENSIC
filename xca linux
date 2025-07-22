@@ -1,0 +1,89 @@
+
+  deb1 → rootCA
+  deb2 → subCA
+  deb3 → www
+
+deb1--> rootca:
+
+      mkdir -p ca
+      cd ca
+      mkdir -p certs crl newcerts private subca/csr subca/certs subca/private
+          
+      chmod 700 private
+      touch index.txt
+      touch index.txt.attr
+      echo 1000 > serial
+      echo 1000 > crlnumber
+
+        Make sure to download or create a root.cnf and update the dir path:
+            dir = /home/username/ca     ----> username= your debian username
+
+      sudo apt install openssl
+      openssl genrsa -aes256 -out private/ca.key.pem 4096
+      chmod 400 private/ca.key.pem
+
+      openssl req -config rootca.cnf key private/ca.key.pem new -x509 -days 7300 -sha256 extensions v3_ca out certs/ca.cert.pem
+
+deb2 --> subca:-
+
+      mkdir subca
+      cd subca
+      mkdir -p certs crl csr newcerts private
+      chmod 700 private
+      touch index.txt
+      touch index.txt.attr
+      echo 1000 > serial
+      echo 1000 > crlnumber
+
+      Make sure to download or create a subca.cnf and update the dir path:
+            dir = /home/username/subca     ----> username= your debian username
+
+      
+      openssl genrsa -aes256 -out private/subca.key.pem 4096
+      chmod 400 private/subca.key.pem
+  
+      openssl req -config subca.cnf new -sha256 key private/subca.key.pem out csr/subca.csr.pem
+  
+
+deb rootCA (deb1):-
+
+        openssl ca -config rootca.cnf extensions v3_intermediate_ca days 3650 -notext -md sha256 in subca/csr/subca.csr.pem out subca/certs/subca.cert.pem
+
+deb3 (www) :-
+
+        1️⃣ Create cert directory
+              mkdir cert
+              cd cert
+                  download the subca.cnf --->to change the domain name in subca.cnf 
+    
+                  search --> [alt_name]   
+                            DNS.1=www.shuhari.local
+
+        2️⃣ Generate Private Key for Website
+              openssl genrsa -out www.shuhari.local.key.pem 2048
+              ls
+              chmod 400 www.shokari.local.key.pem
+
+          3️⃣ Create a Certificate Signing Request (CSR):-
+                  openssl req -config subca.cnf key www.shokari.local.key.pem new -sha256 out www.shokari.local.csr.pem
+
+deb2 (SubCA) :- 
+          4️⃣ Sign the CSR to create www certificate
+                  openssl ca -config subca.cnf extensions server_cert days 375 -notext -md sha256 in csr/www.shokari.local.csr.pem out certs/www.shokari.local.cert.pem
+            
+
+ 
+Copy these 3 files to deb3:
+
+      From deb1: ca.cert.pem (Root CA)
+      From deb2: subca.cert.pem (Sub CA)
+      From deb2: www.shokari.local.cert.pem (Website cert)
+
+Create a Certificate Chain on deb3
+
+      cat www.shokari.local.cert.pem subca.cert.pem ca.cert.pem > www.shokari.local.cert.chain.pem
+
+
+
+
+
