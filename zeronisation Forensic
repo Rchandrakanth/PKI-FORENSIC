@@ -16,6 +16,8 @@ Sudo mkfs /dev/sdb1 —>> lsblk
 sudo mkdir -p /mnt/mypoint
 Sudo mount   /dev/sdb1 /mnt/mypoint
 
+download the any jpeg image --> save it
+
 Sudo cp cat.jpg /mnt/mypoint
 Sudo rm cat.jpg
 Sudo umount /dev/sdb1
