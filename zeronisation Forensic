@@ -33,6 +33,8 @@ Sudo sha1sum information.img >> hash.txt
 Cat hast.txt
 Sudo xxd -a information.img
 
+sudo apt install bc 
+
 Sudo echo “ibase=16; 00400000 “ | bc  —> we get the skip =41934304
 Sudo echo “ibase=16”; 0040183C “ | bc   =---->> 42000508
 
