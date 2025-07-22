@@ -7,7 +7,7 @@ Sudo mkdir /etc/apache2/ssl
 
 Copy the tinku private key and tinku chain certificate—--> only  pem files  using winscp 
 
-Sudo cp chain chain_tinku.pem  private_tinku.pem /etc/apache2/ssl
+Sudo cp chain_tinku.pem  private_tinku.pem /etc/apache2/ssl
 Cd /etc/apache2/ssl 
 Sudo a2enmod ssl 
 Sudo a2ensite default-ssl
