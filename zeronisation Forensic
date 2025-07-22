@@ -25,8 +25,8 @@ Cd /mnt/mypoiont
 Cd ..
 Sha1sum /dev/sdb1 >> hash.txt
 Sudo xxd -a /dev/sdb1 
-Sudo xxd -a /dev/sdb1 | grep 'ffd8'  ---> starting address of image
-sudo xxd -a /dev/sdb1 | grep 'ffd9'   --> ending address of image 
+Sudo xxd -a /dev/sdb1 | grep 'ffd8'  ---> starting address of image   00400000
+sudo xxd -a /dev/sdb1 | grep 'ffd9'   --> ending address of image     0040183C
 Sudo dd if=/dev/sdb1 |pv | dd of =information.img
 Ls -l or ls -lh
 Sudo sha1sum information.img >> hash.txt
