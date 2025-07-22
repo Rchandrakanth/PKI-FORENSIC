@@ -2,7 +2,7 @@ Go to your VM settings → Storage.
 Click Add Hard Disk → Create New. ---> 1GB hd disk
 
 - Sudo fdisk -l
-- Sudo dd if=/dev/zero |pv | sudo dd of=/dev/sbd bs=3000
+- Sudo dd if=/dev/zero |pv | sudo dd of=/dev/sbd bs=3000    ---> optional
 - sudo fdisk /dev/sdb 
 	- n
 	- p
