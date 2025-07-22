@@ -1,9 +1,8 @@
-After creating the rootca and subca and tinku  digital certificates 
+After creating the rootca and subca and tinku  digital certificates in windows 
 
 Sudo apt install apache2 
-Sudo mkdir tinku
-Cd tinku
-Sudo mkdir /etc/apache2/ssl
+
+Sudo mkdir -p /etc/apache2/ssl
 
 Copy the tinku private key and tinku chain certificate—--> only  pem files  using winscp 
 
